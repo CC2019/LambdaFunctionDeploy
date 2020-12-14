@@ -5,11 +5,22 @@ Resources:
   developerlambdaquotes:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: Assignment3-LF1-1
+      FunctionName: Assignment3-LF1-2
       Handler: lambda_function.lambda_handler
       Runtime: python3.8
       Description: Lambda - Quotes
       MemorySize: 128
       Timeout: 7
+      Layers:
+        - !Ref libs
       Role: >-
         arn:aws:iam::434531902054:role/service-role/Assignment3-LF1-role-go13xt56
+  libs:
+    Type: AWS::Lambda::LayerVersion
+    Properties:
+      LayerName: elasticsearch-lib
+      Content:
+        S3Bucket: layer.lambda.aws
+        S3Key: elasticsearch.zip
+      CompatibleRuntimes:
+        - python3.8
