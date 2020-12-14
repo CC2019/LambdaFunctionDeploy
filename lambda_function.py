@@ -40,6 +40,8 @@ def detect_label(s3_bucket, object_key):
         labels.append(label['Name'])
     return labels
 
+
+
 def get_photo_info(object_key, s3_bucket, labels):
     return {
         "objectKey": object_key,
