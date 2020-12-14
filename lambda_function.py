@@ -1,4 +1,5 @@
 import json
+
 import time
 import boto3
 from requests_aws4auth import AWS4Auth
@@ -7,6 +8,8 @@ from elasticsearch import Elasticsearch, RequestsHttpConnection
 # AmazonS3ReadOnlyAccess
 # AmazonRekognitionFullAccess
 # s3://layer.lambda.aws/elasticsearch.zip
+
+
 
 es_endpoint = 'search-photos-tmekumoyygkksr5uqzxqoqwavi.us-east-1.es.amazonaws.com'  # without 'https://'
 
