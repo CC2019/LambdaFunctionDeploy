@@ -6,7 +6,9 @@ from requests_aws4auth import AWS4Auth
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 
 # AmazonS3ReadOnlyAccess
+
 # AmazonRekognitionFullAccess
+
 # s3://layer.lambda.aws/elasticsearch.zip
 
 
