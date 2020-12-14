@@ -55,6 +55,8 @@ def index_photo(photo_info):
     
 
 
+
+
 def lambda_handler(event, context):
     print(event)
     # print(es.get(index='photos', doc_type = 'photo', id='photo.jpg'))
