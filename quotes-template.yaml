@@ -1,6 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'  
 Transform: 'AWS::Serverless-2016-10-31'  
 Description: Lambda - Quotes  
+
+Parameters:
+  BucketNamePhotos:
+    Type: String
+    Default: 'bucket-for-photos-1'
+    AllowedPattern: "[A-Za-z0-9-]+"
+
 Resources:  
   developerlambdaquotes:
     Type: 'AWS::Serverless::Function'
@@ -24,3 +31,24 @@ Resources:
         S3Key: elasticsearch.zip
       CompatibleRuntimes:
         - python3.8
+
+  S3BucketPhotos:
+    DependsOn:
+      - ConfigLambdaPermission
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketNamePhotos
+      AccessControl: PublicReadWrite
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:Put
+            Function: !GetAtt developerlambdaquotes.Arn
+
+  ConfigLambdaPermission:
+      Type: "AWS::Lambda::Permission"
+      Properties:
+        Action: lambda:InvokeFunction
+        FunctionName: !Ref developerlambdaquotes
+        Principal: s3.amazonaws.com
+        SourceArn: 
+          !Sub 'arn:aws:s3:::${BucketNamePhotos}'
