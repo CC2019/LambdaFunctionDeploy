@@ -5,7 +5,7 @@ Description: Lambda - Quotes
 # Parameters:
 #   BucketNamePhotos:
 #     Type: String
-#     Default: 'smartalbum.album-test'
+#     Default: 'smartalbum.photos-test'
 #     AllowedPattern: "[A-Za-z0-9-]+"
 #   FunctionNameLF1:
 #     Type: String
@@ -43,7 +43,7 @@ Resources:
       - ConfigLambdaPermission
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: smartalbum.album-test
+      BucketName: smartalbum.photos-test
       AccessControl: PublicReadWrite
       NotificationConfiguration:
         LambdaConfigurations:
@@ -56,4 +56,4 @@ Resources:
         Action: lambda:InvokeFunction
         FunctionName: !Ref developerlambdaquotes
         Principal: s3.amazonaws.com
-        SourceArn: 'arn:aws:s3:::smartalbum.album-test'
+        SourceArn: 'arn:aws:s3:::smartalbum.photos-test'
