@@ -5,14 +5,20 @@ Description: Lambda - Quotes
 Parameters:
   BucketNamePhotos:
     Type: String
-    Default: 'bucket-for-photos-1'
+    Default: 'smartalbum.album-test'
+    AllowedPattern: "[A-Za-z0-9-]+"
+  FunctionNameLF1:
+    Type: String
+    Default: Assignment3-LF1-test  # Don't change this
+    AllowedValues: 
+      - Assignment3-LF1-test
     AllowedPattern: "[A-Za-z0-9-]+"
 
 Resources:  
   developerlambdaquotes:
     Type: 'AWS::Serverless::Function'
     Properties:
-      FunctionName: Assignment3-LF1-1
+      FunctionName: !Ref FunctionNameLF1
       Handler: lambda_function.lambda_handler
       Runtime: python3.8
       Description: Lambda - Quotes
