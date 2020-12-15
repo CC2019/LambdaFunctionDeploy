@@ -1,5 +1,4 @@
 import json
-
 import time
 import boto3
 from requests_aws4auth import AWS4Auth
