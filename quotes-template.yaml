@@ -49,6 +49,22 @@ Resources:
         LambdaConfigurations:
           - Event: s3:ObjectCreated:Put
             Function: !GetAtt developerlambdaquotes.Arn
+  S3BucketPoliyPhotos:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref S3BucketPhotos
+      PolicyDocument:
+        Statement:
+          - Action:
+              - 's3:GetObject'
+            Effect: Allow
+            Resource:
+              'Fn::Join':
+                - ''
+                - - 'arn:aws:s3:::'
+                  - !Ref S3BucketPhotos
+                  - /*
+            Principal: '*'
 
   ConfigLambdaPermission:
       Type: "AWS::Lambda::Permission"
