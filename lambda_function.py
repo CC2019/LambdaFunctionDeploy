@@ -15,7 +15,7 @@ from elasticsearch import Elasticsearch, RequestsHttpConnection
 
 
 
-es_endpoint = 'search-photos-tmekumoyygkksr5uqzxqoqwavi.us-east-1.es.amazonaws.com'  # without 'https://'
+es_endpoint = 'search-test-domain-1-aljnptxmbdngifh7icm3gnd7sq.us-east-1.es.amazonaws.com'  # without 'https://'
 
 rekognition = boto3.client('rekognition')
 credentials = boto3.Session().get_credentials()
